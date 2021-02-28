@@ -4,7 +4,7 @@ require './lib/peep'
 class ChitterManager < Sinatra::Base
   get '/peeps' do
     @peeps = Peep.all
-    redirect '/new'
+    erb :home
   end
 
   get '/new' do
