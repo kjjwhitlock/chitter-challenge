@@ -1,7 +1,11 @@
-feature 'allows user to view chitter feed' do
-scenario 'user can see posted cheeps' do
-  visit('/')
-  fill_in :text, with: 'This is my first cheep!'
-  expect(page).to have_content('This is my first cheep!')
-end
+require 'pg'
+
+feature 'adds a new peep to the chitter feed' do
+  scenario 'user can add a peep to the feed' do
+    connection = PG.connect(dbname: 'chitter_test')
+    visit('/peeps/new')
+    fill_in :new_peep, with: 'this is my first peep!'
+    click_button
+    expect(page).to have_content('this is my first peep!')
+  end
 end

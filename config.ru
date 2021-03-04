@@ -1,3 +1,3 @@
-require relative "./app"
+require './app'
 
 run ChitterManager

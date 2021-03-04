@@ -1,5 +1,10 @@
+<h1> The Peep Show </h1>
+<p> Peep away... </p>
+
 <ul>
   <% @peeps.each do |peep| %>
-    <li><%= peep %></li>
+    <li><%= peep.text %></li>
+    <li>Peeped at: <%= peep.created_at[0..15] %></li>
+    <br />
   <% end %>
 </ul>

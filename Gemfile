@@ -1,11 +1,12 @@
 source 'https://rubygems.org'
 
-group :test do
-  gem 'rspec'
   gem 'rubocop', '0.79.0'
   gem 'simplecov', require: false
   gem 'simplecov-console', require: false
   gem 'sinatra'
+  gem 'pg'
   gem 'capybara'
-  run 'pg'
-end
+  gem 'rspec'
+  gem 'dotenv'
+  gem 'shotgun', "~> 0.9.2"
+  gem 'rack-test'
