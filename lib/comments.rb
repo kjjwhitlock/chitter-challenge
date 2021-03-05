@@ -32,13 +32,4 @@ class Comment
       Comment.new(id: comment['id'], comment: comment['comment'], peep_id: comment['peep_id'])
     end
   end
-  #  def self.find(id)
-      #result = DatabaseConnection.query("SELECT * FROM comments WHERE peep_id=#{id}")
-    #  Comment.new(
-    #    id: result[0]['id'],
-    #    comment: result[0]['comment'],
-  #      peep_id: result[0]['peep_id']
-  #    )
-  #  end
-
   end

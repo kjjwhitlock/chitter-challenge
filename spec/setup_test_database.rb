@@ -1,6 +1,4 @@
 require 'pg'
-require'./spec/spec_helper.rb'
-
 
 def setup_test_database
 p "Setting up test database..."

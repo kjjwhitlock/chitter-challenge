@@ -2,6 +2,11 @@
 <p> Peep away... </p>
 
 <ul>
+
+  <form action="/peeps/new" method="get">
+    <input type="submit" value="Add a peep" />
+  </form>
+
   <% @peeps.each do |peep| %>
     <li class="peep" id="peep-<%= peep.id %>">
     <%= peep.text %>

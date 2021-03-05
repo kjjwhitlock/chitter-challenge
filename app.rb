@@ -9,7 +9,7 @@ class ChitterManager < Sinatra::Base
   register Sinatra::Flash
 
   get '/' do
-    'Hello world'
+    redirect '/peeps'
   end
 
   get '/peeps' do
