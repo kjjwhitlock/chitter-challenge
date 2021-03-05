@@ -19,4 +19,13 @@ describe Peep do
     expect(peeps.first.text).to eq "oh hey world4!"
     end
   end
+
+  describe '#comments' do
+    it 'returns a list of comments on the peep' do
+      peep = Peep.comment(comment: "Test peep for commenting on")
+      DatabaseConnection.query("INSERT INTO comments (comment, peep_id) VALUES('Test comment', #{peep.id})")
+      comment = peep.comments.first
+      expect(comment['comment']).to eq 'Test comment'
+    end
+  end
 end

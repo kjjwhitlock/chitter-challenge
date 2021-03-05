@@ -3,8 +3,21 @@
 
 <ul>
   <% @peeps.each do |peep| %>
-    <li><%= peep.text %></li>
-    <li>Peeped at: <%= peep.created_at[0..15] %></li>
-    <br />
-  <% end %>
-</ul>
+    <li class="peep" id="peep-<%= peep.id %>">
+    <%= peep.text %>
+    Peeped at: <%= peep.created_at[0..15] %>
+
+    <form action="/peeps/<%= peep.id %>/comments/new" method="get">
+      <input type="submit" value="Add Comment" />
+    </form>
+    <% @comments = Comment.find(peep.id) %>
+    <% @comments.each do |comment| %>
+    <p><%= comment.comment %></p>
+    <% end %>
+    <!-- <ul>
+      <%# <% @peeps.comments.each do |comment| %> %>
+        <%# <li><%= comment['comment'] %></li> %>
+      <%# <% end %> %>
+    </ul> -->
+    </li>
+<% end %>

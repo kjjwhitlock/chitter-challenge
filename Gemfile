@@ -10,3 +10,4 @@ source 'https://rubygems.org'
   gem 'dotenv'
   gem 'shotgun', "~> 0.9.2"
   gem 'rack-test'
+  gem 'sinatra-flash'
