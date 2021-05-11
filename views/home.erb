@@ -1,6 +1,10 @@
 <h1> The Peep Show </h1>
 <p> Peep away... </p>
 
+<% if @user %>
+  <h1>Welcome, <%= @user.email %></h1>
+<% end %>
+
 <ul>
 
   <form action="/peeps/new" method="get">
