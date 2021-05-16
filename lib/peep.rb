@@ -25,4 +25,13 @@ class Peep
       created_at: result[0]['created_at']
     )
     end
+
+    def self.delete(id:)
+      if ENV['ENVIRONMENT'] == 'test'
+        connection = PG.connect(dbname: 'chitter')
+      else
+        connection = PG.connect(dbname: 'chitter_test')
+      end
+        connection.exec("DELETE FROM peeps WHERE id = #{id}")
+  end
 end

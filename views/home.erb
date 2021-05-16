@@ -19,7 +19,10 @@
   
 
 <% #delete comment%>
-    <input value="Delete" type="submit" />
+<form action="/peeps/<%= peep.id %>" method="post">
+<input type='hidden' name='_method' value='DELETE'/>
+<input type="submit" value="Delete" />
+</form>
 
 <% #new comment %>
     <form action="/peeps/<%= peep.id %>/comments/new" method="get">

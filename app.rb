@@ -6,7 +6,7 @@ require './database_connection_setup'
 require 'sinatra/flash'
 
 class ChitterManager < Sinatra::Base
-  enable :sessions
+  enable :sessions, :method_override
   register Sinatra::Flash
 
   get '/' do
@@ -46,6 +46,13 @@ class ChitterManager < Sinatra::Base
   post '/users' do
   user = User.create(email: params[:email], password: params[:password])
   session[:user_id] = user.id
+  redirect '/peeps'
+end
+
+delete '/peeps/:id' do
+  connection = PG.connect(dbname: 'chitter')
+  connection.exec("DELETE FROM comments WHERE peep_id = #{params['id']}")
+  connection.exec("DELETE FROM peeps WHERE id = #{params['id']}")
   redirect '/peeps'
 end
 
