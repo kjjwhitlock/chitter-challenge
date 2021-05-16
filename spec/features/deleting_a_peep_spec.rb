@@ -1,4 +1,4 @@
-feature 'Deleting a peep do'
+feature 'Deleting a peep do' do
     scenario 'A user can delete a peep' do
         Peep.new(id: 1234, text: "test peep", created_at: nil)
         visit('/peeps')
