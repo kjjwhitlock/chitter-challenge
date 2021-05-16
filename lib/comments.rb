@@ -32,4 +32,8 @@ class Comment
       Comment.new(id: comment['id'], comment: comment['comment'], peep_id: comment['peep_id'])
     end
   end
-  end
+
+    def self.delete(id)
+      result = DatabaseConnection.query("DELETE * FROM comments WHERE peep_id=#{id}")
+    end
+end 

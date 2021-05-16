@@ -1,6 +1,6 @@
 describe '.find' do
   it 'finds a user by ID' do
-    user = User.create(email: 'test@example.com', password: 'password')
+    user = User.create(email: "test@example.com", password: "password")
     result = User.find(id: user)
 
     expect(result.id).to eq user.id
