@@ -6,20 +6,23 @@
 <% end %>
 
 <ul>
-
+<% #new peep %>
   <form action="/peeps/new" method="get">
     <input type="submit" value="Add a peep" />
   </form>
 
+<% #list peeps %>
   <% @peeps.each do |peep| %>
     <li class="peep" id="peep-<%= peep.id %>">
     <%= peep.text %>
     Peeped at: <%= peep.created_at[0..15] %>
   
 
-  
+<% #delete comment%>
+    <input value="Delete" type="submit" />
+
+<% #new comment %>
     <form action="/peeps/<%= peep.id %>/comments/new" method="get">
-      <input value="Delete" type="submit" />
       <input type="submit" value="Add Comment" />
     </form>
     <% @comments = Comment.find(peep.id) %>
