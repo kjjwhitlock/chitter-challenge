@@ -1,11 +1,10 @@
 feature 'Deleting a peep do' do
     scenario 'A user can delete a peep' do
-        peep = Peep.create(text: "test peep")
+        peep = Peep.create(text: "burrito")
         visit('/peeps')
-        expect(page).to have_text("test peep")
+        expect(page).to have_text("burrito")
         first('.peep').click_button 'Delete'
         expect(current_path).to eq '/peeps'
-        visit('/peeps')
-        expect(page).not_to have_text("test peep")
+        expect(page).not_to have_text("burrito")
     end
 end

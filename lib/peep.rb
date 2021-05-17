@@ -11,6 +11,11 @@ class Peep
   end
 
   def self.all
+    if ENV['ENVIRONMENT'] == 'test'
+      connection = PG.connect(dbname: 'chitter')
+    else
+      connection = PG.connect(dbname: 'chitter_test')
+    end
     result = DatabaseConnection.query("SELECT * FROM peeps ORDER BY created_at desc;")
     result.map do |peep|
     Peep.new(id: peep['id'], text: peep['text'], created_at: peep['created_at'])
@@ -18,6 +23,11 @@ class Peep
   end
 
     def self.create(text:)
+      if ENV['ENVIRONMENT'] == 'test'
+        connection = PG.connect(dbname: 'chitter')
+      else
+        connection = PG.connect(dbname: 'chitter_test')
+      end
     result = DatabaseConnection.query("INSERT INTO peeps(text) VALUES('#{text}') RETURNING id, text, created_at;")
     Peep.new(
       id: result[0]['id'],
